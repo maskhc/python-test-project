@@ -1,0 +1,36 @@
+'''
+猜数字游戏： 从电脑给出1-100的随机数中的一个，用户进行猜数
+'''
+import random    #构造模块
+
+pc=random.randint(1,100)   #构造 1-100 随机数
+N=1
+
+while True:
+    print(f'第{N}次')
+
+    try:  # try-except语句用于实现异常处理
+        num = int(input("请输入猜测的数："))
+    except ValueError:
+        print("输入内容必须为整数！")
+        print()
+        print(f'第{N+1}次')
+        num = int(input("请重新输入猜测的数[1-100]："))
+        N = N + 1
+
+    N += 1
+
+    if num > pc:
+        print('猜大了，请猜小一点！')
+        print()
+    elif num < pc:
+        print('猜小了，请猜大一点！')
+        print()
+    else:
+        print('恭喜你，猜对了，奖励么么哒一个！')
+        print()
+        break
+
+    if N > 8:
+        print(f'猜了{N-1}次','智商余额不足，请充值！')
+        print()
